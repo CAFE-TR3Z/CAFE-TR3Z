@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona de Comentarios</title>
+    <style>
+        body {
+            background-image: url('comentarios.gif');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        #comment-form {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #b1823d;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+        #comment-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #comment-form input[type="text"], #comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        #comment-form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #a76f25;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #comment-form button[type="submit"]:hover {
+            background-color: #72580491;
+        }
+        #view-comments {
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+        #view-comments:hover {
+            background-color: #3e8e41;
+        }
+        #comments-list {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffffcc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        #comments-list h2 {
+            margin-top: 0;
+        }
+        #comments-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #comments-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="comment-form">
+        <h2>Deja tu comentario, gracias a ellos podemos mejorar nuestro servicio:</h2>
+        <form id="form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="comment">Comentario:</label>
+            <textarea id="comment" name="comment" required></textarea>
+            <button type="submit">Enviar comentario</button>
+        </form>
+        <div id="success-message" style="display: none;">
+            <p>¡Gracias por tu comentario!</p>
+        </div>
+        <button id="view-comments">Ver Comentarios</button>
+    </div>
+
+    <div id="comments-list">
+        <h2>Comentarios Registrados</h2>
+        <ul id="comments"></ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("form");
+            const commentsList = document.getElementById("comments-list");
+            const commentsUl = document.getElementById("comments");
+
+            // Cargar comentarios del almacenamiento local al iniciar
+            const loadComments = () => {
+                const comments = JSON.parse(localStorage.getItem("comments")) || [];
+                commentsUl.innerHTML = "";
+                comments.forEach(comment => {
+                    const li = document.createElement("li");
+                    li.textContent = `${comment.name}: ${comment.text}`;
+                    commentsUl.appendChild(li);
+                });
+            };
+
+            // Guardar comentario en el almacenamiento local
+            const saveComment = (name, text) => {
+                const comments = JSON.parse(localStorage.getItem("comments")) || [];
+                comments.push({ name, text });
+                localStorage.setItem("comments", JSON.stringify(comments));
+            };
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+                const name = document.getElementById("name").value;
+                const text = document.getElementById("comment").value;
+                saveComment(name, text);
+                document.getElementById("success-message").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("success-message").style.display = "none";
+                }, 3000);
+                form.reset();
+            });
+
+            document.getElementById("view-comments").addEventListener("click", function() {
+                commentsList.style.display = commentsList.style.display === "none" ? "block" : "none";
+                loadComments();
+            });
+
+            loadComments();
+        });
+    </script>
+</body>
+</html>

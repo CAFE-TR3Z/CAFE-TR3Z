@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Sitio Web</title>
+    <style>
+        body {
+            background-image: url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .header {
+            background-color: #8B4513;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 100px;
+            height: auto;
+        }
+        .contact {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .menu-item {
+            cursor: pointer;
+        }
+        .menu-item img {
+            width: 200px;
+            height: auto;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cafe Tr3z</h1>
+    </div>
+    <div class="menu">
+        <a href="https://www.didi-food.com/es-MX/food/store/5764607643247968488/CAFE-TR3Z" class="menu-item">
+            <img src="didi.jpg" alt="Menu">
+        </a>
+        <a href="https://www.rappi.com.mx/restaurantes/delivery/457529-cafe-tr3z" class="menu-item">
+            <img src="rappi.jpg" alt="Extra">
+        </a>
+        <a href="https://www.ubereats.com/mx-en/store/cafe-tr3z/MTeFraQ1T4eVyl70NGQMEQ" class="menu-item">
+            <img src="uber.jpg" alt="Comentarios">
+        </a>
+    </div>
+</body>
+</html>

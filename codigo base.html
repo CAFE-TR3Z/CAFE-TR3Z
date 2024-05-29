@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Sitio Web</title>
+    <style>
+        body {
+            background-image: url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #756050;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 100px;
+            height: auto;
+        }
+        .contact {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(184, 149, 128, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 100px;
+        }
+        .menu-item {
+            cursor: pointer;
+        }
+        .menu-item img {
+            width: 200px;
+            height: auto;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cafe Tr3z</h1>
+    </div>
+    <img src="png logo.png" alt="Logo" class="logo">
+    <div class="menu">
+        <div class="menu-item" onclick="window.location.href='Proyecto cafe tr3z.html'">
+            <img src="menu1.png" alt="Menu">
+        </div>
+        <div class="menu-item" onclick="window.location.href='reservaciones.html'">
+            <img src="extra31.png" alt="Extra">
+        </div>
+        <div class="menu-item" onclick="window.location.href='comentarios.html'">
+            <img src="comentarios1.png" alt="Comentarios">
+        </div>
+        <div class="menu-item" onclick="window.location.href='pedidos.html'">
+            <img src="motologo.png" alt="Rappi">
+        </div>
+    </div>
+    <div class="contact">
+        <p>Redes sociales: https://www.facebook.com/tr3zcafe/ </p>
+        <p>Teléfono: 686-488-7343</p>
+        <p>Email: contacto@cafetr3z.com</p>
+    </div>
+</body>
+</html>
